@@ -1,3 +1,4 @@
+To prep the soon-to-be programmer:
 1. converter 3.3V to STM32 3.3V
 2. converter ground to STM32 ground
 3. converter TX to STM32 A10
@@ -13,3 +14,25 @@
 6. move BOOT) jumper back to position 0
 7. press RESET button on STM32, built in LED should blink
 8. unplug USB converter
+
+To use/test it:
+1. download the Arduino SAM Boards package for access to the correct compiler toolchain
+	- in the IDE: tools -> Board: -> Board Manager
+	- search "Due" or "SAM Boards" and install the correct package from the list
+2. download the zip file that contains STM32 files for Arduino IDE
+	- https://github.com/ktasbas/stm32loader/blob/master/Arduino_STM32-master.zip
+3. unzip to arduino directory (Windows ex. Documents/Arduino/hardware)
+	- might have to create 'hardware' directory
+4. restart the IDE
+5. configure the board and port in the tools menu:
+	Board: Generic STM32F103C series
+	Variant: STM32F103C8 (20k RAM, 64k Flash)
+	CPU Speed: 72Mhz
+	Upload method: STM32duino bootloader
+	Optimize: Smallest-default (depends on your application)
+	Programmer: AVRISP mkII
+6. modify the example Blink program by changing LED_BUILTIN to PC13 on lines 28,
+   33, and 35 of the code provided by Arduino in Files -> Examples -> Basics -> Blink
+7. or download the modified version from: 
+	- https://github.com/ktasbas/stm32loader/blob/master/blink_test/blink_test.ino
+8. upload the sketch and verify the on board LED is blinking

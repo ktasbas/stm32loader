@@ -1,0 +1,15 @@
+1. converter 3.3V to STM32 3.3V
+2. converter ground to STM32 ground
+3. converter TX to STM32 A10
+4. converter RX to STM32 A9
+5. BOOT0 jumper moved to position 1
+5. run python boot loader program with:
+	-e to erase flash
+	-v to verify after upload
+	-p to specify device port
+	   (dmesg or ls /dev after plugging into PC)
+	-w to write specified file
+	> python ./stm32loader -e -v -p /dev/ttyUSB0 -w generic_boot20_pc13.bin
+6. move BOOT) jumper back to position 0
+7. press RESET button on STM32, built in LED should blink
+8. unplug USB converter
